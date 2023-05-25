@@ -27,16 +27,20 @@ export interface TicTacToe {
 export class TicTacToeGame implements TicTacToe {
   private state: GameState;
 
-  constructor() {
-    this.state = {
-      grid: [
-        [null, null, null],
-        [null, null, null],
-        [null, null, null],
-      ],
-      currentPlayer: "X",
-      status: "InProgress",
-    };
+  constructor(ticTacToeGame?: TicTacToeGame) {
+    if (ticTacToeGame) {
+      this.state = ticTacToeGame.state;
+    } else {
+      this.state = {
+        grid: [
+          [null, null, null],
+          [null, null, null],
+          [null, null, null],
+        ],
+        currentPlayer: "X",
+        status: "InProgress",
+      };
+    }
   }
 
   makeMove(move: Move): void {

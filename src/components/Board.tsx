@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { TicTacToeGame, GameState, Player } from "./../lib/TicTacToe";
+import { TicTacToeGame, Player } from "./../lib/TicTacToe";
 
 const Board: React.FC = () => {
   const [game, setGame] = useState<TicTacToeGame>(() => new TicTacToeGame());
@@ -7,12 +7,12 @@ const Board: React.FC = () => {
   const handleCellClick = (rowIndex: number, columnIndex: number) => {
     if (game.getCurrentState().status === "InProgress") {
       try {
-        const newGame = new TicTacToeGame();
-        newGame.makeMove({
+        const newGameState = new TicTacToeGame(game);
+        newGameState.makeMove({
           player: game.getCurrentState().currentPlayer,
           coordinates: [rowIndex, columnIndex],
         });
-        setGame(newGame);
+        setGame(newGameState);
       } catch (error) {
         console.log(error);
       }
