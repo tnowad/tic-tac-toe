@@ -1,5 +1,7 @@
+import Board from "./components/Board";
+
 function App() {
-  return <div className="text-3xl font-bold text-blue-600">Test</div>;
+  return <Board />;
 }
 
 export default App;
